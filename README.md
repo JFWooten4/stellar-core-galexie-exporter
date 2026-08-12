@@ -10,6 +10,12 @@ input byte offset. By default it hole-punches only fully consumed 4 KiB extents,
 so the append-only Core stream keeps a stable inode and logical offset without
 continually consuming SSD blocks.
 
+## Documentation
+
+- [Architecture and data format](docs/architecture.md)
+- [Installation and service setup](docs/installation.md)
+- [Operations, recovery, and troubleshooting](docs/operations.md)
+
 ## Usage
 
 Configure an observer Stellar Core node:
@@ -26,6 +32,10 @@ stellar-core-metadata-exporter \
   --input /mnt/core/stellar/core-data/metadata-output/ledger-close-meta.xdr \
   --output /mnt/rpc/stellar-processing/galexie-main-core
 ```
+
+Run `stellar-core-metadata-exporter -h` for all options. The current release is
+Linux-only when reclaim is enabled and writes the fixed Pubnet Galexie schema of
+64 ledgers per batch and 1,000 batches per partition.
 
 The first partial 64-ledger range is intentionally skipped. Output starts at the
 next sequence divisible by 64. A sequence gap discards the incomplete batch and
