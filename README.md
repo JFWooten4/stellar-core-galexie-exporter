@@ -65,10 +65,3 @@ go build -trimpath ./...
 ```
 
 GitHub Actions runs the same checks for pull requests and pushes to `main`.
-
-## License
-
-Copyright 2026 John Wooten.
-
-Licensed under the GNU Affero General Public License, version 3 or later. See
-[`LICENSE`](LICENSE).
