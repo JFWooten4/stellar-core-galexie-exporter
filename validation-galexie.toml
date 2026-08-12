@@ -1,0 +1,14 @@
+[datastore_config]
+type = "Filesystem"
+
+[datastore_config.params]
+destination_path = "/data"
+
+[datastore_config.schema]
+ledgers_per_file = 64
+files_per_partition = 1000
+
+[stellar_core_config]
+network = "pubnet"
+stellar_core_binary_path = "/usr/bin/stellar-core"
+storage_path = "/tmp/captive-core"
