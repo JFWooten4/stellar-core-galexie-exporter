@@ -1,5 +1,7 @@
 # Stellar Core Galexie Exporter
 
+[![Tests](https://github.com/JFWooten4/stellar-core-galexie-exporter/actions/workflows/test.yml/badge.svg)](https://github.com/JFWooten4/stellar-core-galexie-exporter/actions/workflows/test.yml)
+
 Consumes Stellar Core's RFC 5531-framed `METADATA_OUTPUT_STREAM` and writes the
 same 64-ledger, zstd-compressed `LedgerCloseMetaBatch` filesystem layout used by
 Galexie. The output is suitable for Galexie/Hubble-compatible readers without
@@ -50,6 +52,19 @@ with `--reclaim=false` when testing against an irreplaceable input file.
 Stellar Core rejects `METADATA_OUTPUT_STREAM` when `NODE_IS_VALIDATOR=true`
 because metadata is written synchronously during ledger close. Run this tool
 only against a passive observer node.
+
+## Development
+
+Run the test and static-analysis suite before submitting a change:
+
+```bash
+gofmt -w main.go main_test.go
+go test -race -cover ./...
+go vet ./...
+go build -trimpath ./...
+```
+
+GitHub Actions runs the same checks for pull requests and pushes to `main`.
 
 ## License
 
